@@ -21,6 +21,10 @@ double: display single callendar or double callendar.
 
 ```javascript
   import VueDaterangePicker from 'src/components/vue-daterange-picker';
+  
+  components: {
+    VueDaterangePicker
+  }
 ```
 
 ### example:
