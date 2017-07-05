@@ -263,6 +263,11 @@
         this.potentialStartDate = this.startDateLabel;
         this.potentialEndDate = this.endDateLabel;
         this.$refs.pointer.style.left = '90px';
+        let data = {
+          startDate: moment(this.selectedStartDate).format(),
+          endDate: moment(this.selectedEndDate).format()
+        };
+        this.$emit('get-dates', data);
       },
 
       createDayClass(day) {

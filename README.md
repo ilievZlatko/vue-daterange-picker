@@ -48,7 +48,10 @@ changes the format of the inputs (default: 'MM/DD/YYYY')
 changes the format of the calendar months (default: 'MMMM Y')
 
 ### example:
+When click away or hit escape key the component fires event 'get-dates' that contains an object
+with startDate and endDate keys holding values of start date and end date in utc format.
+
 ```!DOCTYPE html
-  <vue-daterange-picker double start-date="06/10/2017" end-date="06/10/2018"/>
+  <vue-daterange-picker double start-date="06/10/2017" end-date="06/10/2018" @get-dates="getDates"/>
 ```
 vue daterange-picker component
