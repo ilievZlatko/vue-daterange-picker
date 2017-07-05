@@ -2,14 +2,14 @@
 
 A vue component for picking range of dates.
 
-# install
+# Install
 ```bash
 npm install vue-daterange-picker --save
 npm install moment --save
 npm install vue-clickaway --save
 ```
 
-# in your main.js file
+# In your main.js file:
 ```javascript
  import moment from 'moment';
  
@@ -25,9 +25,11 @@ npm install vue-clickaway --save
   }
 ```
 
-# dependencies
-The vue-daterange-picker is using momentjs and vue-clickaway as dependencies.
-They will be automatically installed with the package.
+# Dependencies:
+You need to install:
+
+#### vue-clickaway:  npm install vue-clickaway --save
+#### momentJS: npm install moment --save
 
 # Props:
 
