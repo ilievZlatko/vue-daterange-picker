@@ -4,7 +4,25 @@ A vue component for picking range of dates.
 
 # install
 ```bash
-pm i vue-daterange-picker --save
+npm install vue-daterange-picker --save
+npm install moment --save
+npm install vue-clickaway --save
+```
+
+# in your main.js file
+```javascript
+ import moment from 'moment';
+ 
+ Vue.prototype.moment = moment;
+```
+
+# import in project:
+```javascript
+  import VueDaterangePicker from 'src/components/vue-daterange-picker';
+  
+  components: {
+    VueDaterangePicker
+  }
 ```
 
 # dependencies
@@ -16,16 +34,6 @@ Component expects properties:
 start-date, end-date: utc, or any kind of date string.
 And then it will initiate callendar between these dates.
 double: display single callendar or double callendar.
-
-# import in project:
-
-```javascript
-  import VueDaterangePicker from 'src/components/vue-daterange-picker';
-  
-  components: {
-    VueDaterangePicker
-  }
-```
 
 ### example:
 ```!DOCTYPE html

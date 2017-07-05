@@ -1,8 +1,13 @@
 {
   "name": "vue-daterange-picker",
   "version": "1.0.4",
+  "private": false,
   "description": "Date range picker for vueJS",
   "author": "Zlatko Iliev <iliev.zlatko@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ilievZlatko/vue-daterange-picker.git"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
