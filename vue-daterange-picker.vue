@@ -1,7 +1,7 @@
 <template>
   <div class="daterange-picker" v-on-clickaway="closeCal" @keyup="close">
     <div class="inputs-container">
-      <img src="../assets/calendar.svg" class="calendar" alt="calendar">
+      <img src="./assets/calendar.svg" class="calendar" alt="calendar">
       <input type="text" 
               maxlength="10" 
               ref="startDateInput" 
