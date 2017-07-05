@@ -29,13 +29,22 @@ npm install vue-clickaway --save
 The vue-daterange-picker is using momentjs and vue-clickaway as dependencies.
 They will be automatically installed with the package.
 
-# usage:
+# Props:
+
 Component expects properties:
-start-date, end-date: utc, or any kind of date string.
+#### start-date, end-date: 
+
+utc, or any kind of date string.
 And then it will initiate callendar between these dates.
-double: display single callendar or double callendar.
-format: changes the format of the inputs (default: 'MM/DD/YYYY')
-title-format: changes the format of the calendar months (default: 'MMMM Y')
+#### double: 
+
+display single callendar or double callendar.
+
+#### format: 
+changes the format of the inputs (default: 'MM/DD/YYYY')
+
+#### title-format: 
+changes the format of the calendar months (default: 'MMMM Y')
 
 ### example:
 ```!DOCTYPE html
