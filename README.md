@@ -32,18 +32,17 @@ They will be automatically installed with the package.
 # Props:
 
 Component expects properties:
-#### start-date, end-date: 
-
+#### start-date, end-date: String
 utc, or any kind of date string.
 And then it will initiate callendar between these dates.
-#### double: 
 
+#### double: Boolean
 display single callendar or double callendar.
 
-#### format: 
+#### format: String
 changes the format of the inputs (default: 'MM/DD/YYYY')
 
-#### title-format: 
+#### title-format: String
 changes the format of the calendar months (default: 'MMMM Y')
 
 ### example:
