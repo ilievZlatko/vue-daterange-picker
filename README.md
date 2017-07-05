@@ -34,6 +34,8 @@ Component expects properties:
 start-date, end-date: utc, or any kind of date string.
 And then it will initiate callendar between these dates.
 double: display single callendar or double callendar.
+format: changes the format of the inputs (default: 'MM/DD/YYYY')
+title-format: changes the format of the calendar months (default: 'MMMM Y')
 
 ### example:
 ```!DOCTYPE html
