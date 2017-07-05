@@ -18,7 +18,7 @@ npm install vue-clickaway --save
 
 # import in project:
 ```javascript
-  import VueDaterangePicker from 'src/components/vue-daterange-picker';
+  import VueDaterangePicker from 'node_modules/vue-daterange-picker/vue-daterange-picker';
   
   components: {
     VueDaterangePicker
