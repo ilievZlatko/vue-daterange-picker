@@ -90,7 +90,7 @@
       double: { type: Boolean, default: false },
       format: { type: String, default: 'MM/DD/YYYY' },
       titleFormat: { type: String, default: 'MMMM Y' },
-      datesFormat: { type: String, defualt: 'M/D/YYYY' }
+      datesFormat: { type: String, default: 'M/D/YYYY' }
     },
 
     data () {
