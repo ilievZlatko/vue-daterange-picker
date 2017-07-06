@@ -1,15 +1,14 @@
 {
   "name": "vue-daterange-picker",
-  "version": "1.1.6",
+  "version": "1.1.8",
   "private": false,
   "description": "Date range picker for vueJS",
   "author": "Zlatko Iliev <iliev.zlatko@gmail.com>",
   "main": "vue-daterange-picker.vue",
   "keywords": [
-    "vue daterangepicker",
-    "daterangepicker vue",
-    "vue daterange picker",
-    "daterange picker vue"
+    "vue",
+    "daterangepicker",
+    "daterange picker"
   ],
   "repository": {
     "type": "git",
