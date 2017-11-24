@@ -29,13 +29,14 @@
         <table>
           <thead>
             <tr>
-              <td v-for="day of moment.weekdaysMin()">{{day}}</td>
+              <td v-for="(day, index) of moment.weekdaysMin()" :key="index">{{day}}</td>
             </tr>
           </thead>
           <tbody>
             <template v-for="weeks in leftCal">
               <tr>
-                <td v-for="day in weeks" 
+                <td v-for="(day, index) in weeks" 
+                    :key="index"
                     @click.stop="dayClick(day)"
                     @mouseover="getPotentialDate(day)"
                     :class="createDayClass(day)" >
@@ -52,13 +53,14 @@
         <table>
           <thead>
             <tr>
-              <td v-for="day of moment.weekdaysMin()">{{day}}</td>
+              <td v-for="(day, index) of moment.weekdaysMin()" :key="index">{{day}}</td>
             </tr>
           </thead>
           <tbody>
             <template v-for="weeks in rightCal">
               <tr>
-                <td v-for="day in weeks" 
+                <td v-for="(day, index) in weeks"
+                    :key="index" 
                     @click.stop="dayClick(day)"
                     @mouseover="getPotentialDate(day)"
                     :class="createDayClass(day)">
@@ -260,6 +262,8 @@
         this.showCalendar = false;
         this.$refs.endDateInput.blur();
         this.$refs.startDateInput.blur();
+        if (this.selectedStartDate) this.startDateLabel = this.selectedStartDate.format(this.format);
+        if (this.selectedEndDate) this.endDateLabel = this.selectedEndDate.format(this.format);
         this.potentialStartDate = this.startDateLabel;
         this.potentialEndDate = this.endDateLabel;
         this.$refs.pointer.style.left = '90px';
@@ -267,7 +271,8 @@
           startDate: moment(this.selectedStartDate).format(),
           endDate: moment(this.selectedEndDate).format()
         };
-        this.$emit('get-dates', data);
+
+        if (this.selectedStartDate && this.selectedEndDate) this.$emit('get-dates', data);
       },
 
       createDayClass(day) {
