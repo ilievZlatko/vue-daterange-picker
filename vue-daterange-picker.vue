@@ -6,7 +6,7 @@
               maxlength="10" 
               ref="startDateInput" 
               class="start-date" 
-              placeholder="MM/DD/YY" 
+              :placeholder="placeHolders" 
               v-model="startDateLabel"
               @click.stop="handleStartDateClick">
       <div class="divider">&mdash;</div>
@@ -14,7 +14,7 @@
              maxlength="10" 
              ref="endDateInput" 
              class="end-date" 
-             placeholder="MM/DD/YY" 
+             :placeholder="placeHolders" 
              v-model="endDateLabel"
              @click.stop="handleEndDateClick">
     </div>
@@ -92,11 +92,13 @@
       double: { type: Boolean, default: false },
       format: { type: String, default: 'MM/DD/YYYY' },
       titleFormat: { type: String, default: 'MMMM Y' },
-      datesFormat: { type: String, default: 'M/D/YYYY' }
+      datesFormat: { type: String, default: 'M/D/YYYY' },
+      placeHolders: { type: String, default: 'MM/DD/YY' }
     },
 
     data () {
       return {
+        moment: moment,
         currentMonth: moment(this.startDate, this.datesFormat, true).startOf('month') || moment().local().startOf('month'),
         montNow: moment().local().startOf('month'),
         today: moment().local().startOf('day'),
@@ -114,15 +116,15 @@
 
     computed: {
       startDateAsMoment() {
-        return moment(this.startDate, this.datesFormat, true).startOf('day');
+        return this.moment(this.startDate, this.datesFormat, true).startOf('day');
       },
 
       endDateAsMoment() {
-        return moment(this.endDate, this.datesFormat, true).startOf('day');
+        return this.moment(this.endDate, this.datesFormat, true).startOf('day');
       },
 
       nextMonth() {
-        return moment(this.currentMonth).add(1, 'month');
+        return this.moment(this.currentMonth).add(1, 'month');
       },
 
       leftCal() {
@@ -142,14 +144,14 @@
       },
 
       canSwitchNextMonth() {
-        return this.currentMonth.isSame(moment(this.startDate), 'month');
+        return this.currentMonth.isSame(this.moment(this.startDate), 'month');
       },
 
       canSwitchPrevMonth() {
         if (this.double) {
-          return this.currentMonth.isSame(moment(this.endDate).subtract(1, 'month'), 'month');
+          return this.currentMonth.isSame(this.moment(this.endDate).subtract(1, 'month'), 'month');
         } else {
-          return this.currentMonth.isSame(moment(this.endDate), 'month');
+          return this.currentMonth.isSame(this.moment(this.endDate), 'month');
         }
       }
     },
@@ -160,7 +162,7 @@
         let calendar = [];
 
         for (let i = 0; i < month.daysInMonth(); i++ ) {
-          tempCalendar.push(moment(month).date(i + 1));
+          tempCalendar.push(this.moment(month).date(i + 1));
         }
 
         let dayIndex = tempCalendar[0].day();
@@ -183,13 +185,13 @@
         if (this.startDateLabel && !this.endDateLabel) {
           this.potentialEndDate = day;
         }
-        if (day.isBefore(moment(this.startDateLabel)) && this.endDateLabel) {
+        if (day.isBefore(this.moment(this.startDateLabel)) && this.endDateLabel) {
           this.potentialStartDate = day;
           this.handleStartDateClick();
         } else {
           this.potentialStartDate = this.startDateLabel;
         }
-        if (day.isAfter(moment(this.endDateLabel)) && this.startDateLabel) {
+        if (day.isAfter(this.moment(this.endDateLabel)) && this.startDateLabel) {
           this.potentialEndDate = day;
           this.handleEndDateClick();
         } else {
@@ -202,11 +204,11 @@
       },
 
       gotoPrevMonth() {
-        this.currentMonth = moment(this.currentMonth.subtract(1, 'month'));
+        this.currentMonth = this.moment(this.currentMonth.subtract(1, 'month'));
       },
 
       gotoNextMonth() {
-        this.currentMonth = moment(this.currentMonth.add(1, 'month'));
+        this.currentMonth = this.moment(this.currentMonth.add(1, 'month'));
       },
 
       dayClick(day) {
@@ -232,7 +234,7 @@
       },
 
       checkDatesOrder() {
-        if (this.endDateLabel && moment(this.endDateLabel).isBefore(moment(this.startDateLabel))) {
+        if (this.endDateLabel && this.moment(this.endDateLabel).isBefore(this.moment(this.startDateLabel))) {
           const endDate = this.endDateLabel;
           const startDate = this.startDateLabel;
           const startDateSelected = this.selectedStartDate;
@@ -259,7 +261,6 @@
       },
 
       closeCal() {
-        this.showCalendar = false;
         this.$refs.endDateInput.blur();
         this.$refs.startDateInput.blur();
         if (this.selectedStartDate) this.startDateLabel = this.selectedStartDate.format(this.format);
@@ -268,11 +269,12 @@
         this.potentialEndDate = this.endDateLabel;
         this.$refs.pointer.style.left = '90px';
         let data = {
-          startDate: moment(this.selectedStartDate).format(),
-          endDate: moment(this.selectedEndDate).format()
+          startDate: this.moment(this.selectedStartDate).format(),
+          endDate: this.moment(this.selectedEndDate).format()
         };
 
-        if (this.selectedStartDate && this.selectedEndDate) this.$emit('get-dates', data);
+        if (this.selectedStartDate && this.selectedEndDate && this.showCalendar) this.$emit('get-dates', data);
+        this.showCalendar = false;
       },
 
       createDayClass(day) {
