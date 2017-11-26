@@ -1,6 +1,6 @@
 {
   "name": "vue-daterange-picker",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "private": false,
   "description": "Date range picker for vueJS",
   "author": "Zlatko Iliev <iliev.zlatko@gmail.com>",

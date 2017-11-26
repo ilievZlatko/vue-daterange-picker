@@ -6,7 +6,7 @@
               maxlength="10" 
               ref="startDateInput" 
               class="start-date" 
-              :placeholder="placeHolders" 
+              placeholder="MM/DD/YY" 
               v-model="startDateLabel"
               @click.stop="handleStartDateClick">
       <div class="divider">&mdash;</div>
@@ -14,7 +14,7 @@
              maxlength="10" 
              ref="endDateInput" 
              class="end-date" 
-             :placeholder="placeHolders" 
+             placeholder="MM/DD/YY" 
              v-model="endDateLabel"
              @click.stop="handleEndDateClick">
     </div>
@@ -92,13 +92,12 @@
       double: { type: Boolean, default: false },
       format: { type: String, default: 'MM/DD/YYYY' },
       titleFormat: { type: String, default: 'MMMM Y' },
-      datesFormat: { type: String, default: 'M/D/YYYY' },
-      placeHolders: { type: String, default: 'MM/DD/YY' }
+      datesFormat: { type: String, default: 'M/D/YYYY' }
     },
 
     data () {
       return {
-        moment: moment,
+        moment,
         currentMonth: moment(this.startDate, this.datesFormat, true).startOf('month') || moment().local().startOf('month'),
         montNow: moment().local().startOf('month'),
         today: moment().local().startOf('day'),
@@ -234,7 +233,7 @@
       },
 
       checkDatesOrder() {
-        if (this.endDateLabel && this.moment(this.endDateLabel).isBefore(this.moment(this.startDateLabel))) {
+        if (this.endDateLabel && moment(this.endDateLabel).isBefore(moment(this.startDateLabel))) {
           const endDate = this.endDateLabel;
           const startDate = this.startDateLabel;
           const startDateSelected = this.selectedStartDate;
@@ -302,7 +301,7 @@
 <style scoped>
   .daterange-picker {
     position: relative;
-    display: flex;
+    display: inline-flex;
     flex-direction: column;
     align-items: flex-start;
   }
@@ -352,8 +351,8 @@
   }
 
   .calendar-holder {
-    position: absolute;
-    top: 55px;
+    position: relative;
+    top: 15px;
     left: 0;
     display: flex;
     flex-shrink: 0;
