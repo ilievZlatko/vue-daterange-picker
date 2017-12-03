@@ -46,7 +46,7 @@ change the text in the placeholders.
 When click away or hit escape key the component fires event 'get-dates' that contains an object
 with startDate and endDate keys holding values of start date and end date in utc format.
 
-```!DOCTYPE html
+```javascript
   <vue-daterange-picker 
       double 
       start-date="06/10/2017" 
@@ -54,4 +54,3 @@ with startDate and endDate keys holding values of start date and end date in utc
       place-holders="mm/dd/yyyy"
       @get-dates="getDates"/>
 ```
-vue daterange-picker component
