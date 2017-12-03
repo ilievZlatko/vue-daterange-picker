@@ -2,6 +2,10 @@
 
 A vue component for picking range of dates.
 
+<section id="vuejs" class="section">
+    <h1>Hello from plain HTML tag</h1>
+</section>
+
 # Install
 ```bash
 npm install vue-daterange-picker --save
