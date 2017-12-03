@@ -40,7 +40,7 @@ changes the format of the calendar months (default: 'MMMM Y')
 
 #### place-holders: String
 change the text in the placeholders.
-##### example: place-holders="dates"
+#### example: place-holders="dates"
 
 ### example:
 When click away or hit escape key the component fires event 'get-dates' that contains an object
