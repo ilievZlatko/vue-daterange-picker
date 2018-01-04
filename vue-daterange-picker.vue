@@ -6,7 +6,7 @@
               maxlength="10" 
               ref="startDateInput" 
               class="start-date" 
-              :placeholder="placeHolders" 
+              :placeholder="startPlaceHolder" 
               v-model="startDateLabel"
               @click.stop="handleStartDateClick">
       <div class="divider">&mdash;</div>
@@ -14,7 +14,7 @@
              maxlength="10" 
              ref="endDateInput" 
              class="end-date" 
-             :placeholder="placeHolders"  
+             :placeholder="endPlaceHolder"  
              v-model="endDateLabel"
              @click.stop="handleEndDateClick">
     </div>
@@ -93,7 +93,8 @@
       format: { type: String, default: 'MM/DD/YYYY' },
       titleFormat: { type: String, default: 'MMMM Y' },
       datesFormat: { type: String, default: 'M/D/YYYY' },
-      placeHolders: { type: String, default: 'MM/DD/YY' }
+      startPlaceHolder: { type: String, default: 'MM/DD/YY' },
+      endPlaceHolder: { type: String, default: 'MM/DD/YY' }
     },
 
     data () {
