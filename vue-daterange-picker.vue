@@ -228,7 +228,7 @@
           this.selectedEndDate = day;
           this.$refs.startDateInput.focus();
           if (!this.ignoreWatch) {
-            this.handleStartDateClick();
+            this.handleStartDateClick(true);
           }
           return;
         }
@@ -247,7 +247,14 @@
         }
       },
 
-      handleStartDateClick() {
+      handleStartDateClick(fromEnd) {
+        let disabled = document.querySelectorAll('td.disabled');
+        if(fromEnd != true && disabled.length != 0) {
+          let i;
+          for(i = 0; i < disabled.length; i++){
+            disabled[i].classList.remove('disabled');
+          }
+        }
         this.dateToInput = 'start';
         this.$refs.pointer.style.left = '90px';
         this.$refs.startDateInput.select();      
@@ -281,6 +288,7 @@
       createDayClass(day) {
         if (!day) return { nil: true };
         return {
+          disabled: day.isBefore(this.startDate, 'day') || day.isBefore(this.selectedStartDate, 'day'),
           nil: day.isBefore(this.startDate, 'day') || day.isAfter(this.endDate, 'day'),
           current: day.isSame(this.today),
           selected: day.isSame(this.selectedStartDate) || day.isSame(this.selectedEndDate),
@@ -483,5 +491,11 @@
   td.ranged {
     background: rgba(79, 190, 140, 0.67);
     color: #fff;
+  }
+  td.disabled{
+    pointer-events: none;
+    background-color: #eee;
+    color: #ffffff;
+    border-radius: 0;
   }
 </style>
