@@ -19,7 +19,7 @@
              @click.stop="handleEndDateClick">
     </div>
 
-    <div class="calendar-holder" v-show="showCalendar">
+    <div class="calendar-holder" :class="createCalHolderClass" v-show="showCalendar">
       <div class="pointer" ref="pointer"></div>
       <div class="arrow-left" ref="leftArrow" :class="{disabled: canSwitchNextMonth}" @click="gotoPrevMonth">&lsaquo;</div>
       <div class="arrow-right" ref="rightArrow" :class="{disabled: canSwitchPrevMonth}" @click="gotoNextMonth">&rsaquo;</div>
@@ -290,6 +290,12 @@
                   || day.isBetween(this.selectedEndDate, this.selectedStartDate, 'day')
         };
       },
+
+      createCalHolderClass() {
+        return {
+          double: this.double
+        }
+      },
       
       close(e) {
         if (e.code === 'Escape' || e.keyCode === 27) {
@@ -363,6 +369,10 @@
     background: #fff;
     box-shadow: 0 3px 8px 1px rgba(0,0,0,0.26);
     box-sizing: border-box;
+  }
+
+  .double {
+    width: 520px;
   }
 
   .pointer {
